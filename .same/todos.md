@@ -45,6 +45,8 @@
 - [x] Multi-level plan endorsement
 - [x] Charts and analytics (Recharts)
 - [x] Entra ID integration guide created
+- [x] Green theme with DLPP logo integration
+- [🔄] Deploy to GitHub repository (in progress)
 
 ## Security Actions (URGENT) - USER ACTION REQUIRED
 - [ ] **USER MUST DO:** Rotate Supabase API keys in dashboard

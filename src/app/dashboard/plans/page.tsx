@@ -84,7 +84,8 @@ export default function PlansPage() {
   }
 
   const getStatusBadge = (status: string) => {
-    const config: Record<string, { variant: 'default' | 'secondary' | 'destructive' | 'outline'; icon: any }> = {
+    type LucideIcon = typeof FileText
+    const config: Record<string, { variant: 'default' | 'secondary' | 'destructive' | 'outline'; icon: LucideIcon }> = {
       draft: { variant: 'secondary', icon: FileText },
       review: { variant: 'outline', icon: Clock },
       endorsed: { variant: 'default', icon: CheckCircle },

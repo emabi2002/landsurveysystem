@@ -84,7 +84,8 @@ export default function UploadsPage() {
   }
 
   const getStatusBadge = (status: string) => {
-    const variants: Record<string, { variant: 'default' | 'secondary' | 'destructive'; icon: any }> = {
+    type LucideIcon = typeof Upload
+    const variants: Record<string, { variant: 'default' | 'secondary' | 'destructive'; icon: LucideIcon }> = {
       pending: { variant: 'secondary', icon: Upload },
       validated: { variant: 'default', icon: CheckCircle },
       rejected: { variant: 'destructive', icon: XCircle },

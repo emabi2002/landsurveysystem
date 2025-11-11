@@ -39,9 +39,9 @@ export default function ReportsPage() {
     overdue: 0,
     total: 0,
   })
-  const [jobStatusData, setJobStatusData] = useState<any[]>([])
-  const [trendData, setTrendData] = useState<any[]>([])
-  const [priorityData, setPriorityData] = useState<any[]>([])
+  const [jobStatusData, setJobStatusData] = useState<Array<{ name: string; value: number }>>([])
+  const [trendData, setTrendData] = useState<Array<{ name: string; value: number }>>([])
+  const [priorityData, setPriorityData] = useState<Array<{ name: string; value: number }>>([])
   const supabase = createClient()
 
   useEffect(() => {
@@ -84,10 +84,10 @@ export default function ReportsPage() {
       })
 
       // Job status distribution
-      const statusCount = jobs?.reduce((acc: any, job) => {
+      const statusCount = jobs?.reduce((acc: Record<string, number>, job) => {
         acc[job.status] = (acc[job.status] || 0) + 1
         return acc
-      }, {})
+      }, {} as Record<string, number>)
 
       setJobStatusData(
         Object.entries(statusCount || {}).map(([status, count]) => ({
@@ -97,10 +97,10 @@ export default function ReportsPage() {
       )
 
       // Priority distribution
-      const priorityCount = jobs?.reduce((acc: any, job) => {
+      const priorityCount = jobs?.reduce((acc: Record<string, number>, job) => {
         acc[job.priority] = (acc[job.priority] || 0) + 1
         return acc
-      }, {})
+      }, {} as Record<string, number>)
 
       setPriorityData(
         Object.entries(priorityCount || {}).map(([priority, count]) => ({
@@ -118,8 +118,8 @@ export default function ReportsPage() {
 
       setTrendData(
         Object.entries(trendMap).map(([date, count]) => ({
-          date,
-          jobs: count,
+          name: date,
+          value: count,
         }))
       )
 
@@ -248,13 +248,13 @@ export default function ReportsPage() {
                 <ResponsiveContainer width="100%" height={300}>
                   <LineChart data={trendData}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" />
+                    <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip />
                     <Legend />
                     <Line
                       type="monotone"
-                      dataKey="jobs"
+                      dataKey="value"
                       stroke="#8884d8"
                       strokeWidth={2}
                       name="Jobs Created"

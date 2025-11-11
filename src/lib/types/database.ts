@@ -1,5 +1,8 @@
 // Database Types for Surveying Division System
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type JsonValue = any
+
 export interface SurveyJob {
   id: string
   job_number: string
@@ -15,8 +18,8 @@ export interface SurveyJob {
   assigned_date?: string
   sla_due?: string
   location_description?: string
-  site_geom?: any // GeoJSON
-  metadata?: Record<string, any>
+  site_geom?: JsonValue // GeoJSON
+  metadata?: Record<string, JsonValue>
   created_by?: string
   created_at: string
   updated_at: string
@@ -34,7 +37,7 @@ export interface Surveyor {
   status: 'active' | 'suspended' | 'expired'
   competencies?: string[]
   cpd_hours?: number
-  conflict_declarations?: any[]
+  conflict_declarations?: JsonValue[]
   created_at: string
   updated_at: string
 }
@@ -50,7 +53,7 @@ export interface WorkOrder {
   instruments?: string[]
   vehicle?: string
   status: 'draft' | 'approved' | 'in-progress' | 'completed'
-  checklist?: any[]
+  checklist?: JsonValue[]
   created_by?: string
   created_at: string
   updated_at: string
@@ -59,15 +62,15 @@ export interface WorkOrder {
 export interface ControlPoint {
   id: string
   code: string
-  geom: any // PostGIS PointZ
+  geom: JsonValue // PostGIS PointZ
   datum: string
   accuracy_class_id?: string
   installed_on?: string
   status: 'active' | 'deprecated' | 'destroyed'
   monument_type?: string
   description?: string
-  history?: any[]
-  metadata?: Record<string, any>
+  history?: JsonValue[]
+  metadata?: Record<string, JsonValue>
   created_at: string
   updated_at: string
 }
@@ -82,9 +85,9 @@ export interface FieldUpload {
   checksum?: string
   uploaded_by?: string
   uploaded_at: string
-  validations?: Record<string, any>
+  validations?: Record<string, JsonValue>
   status: 'pending' | 'validated' | 'rejected'
-  metadata?: Record<string, any>
+  metadata?: Record<string, JsonValue>
 }
 
 export interface ProcessingRun {
@@ -92,7 +95,7 @@ export interface ProcessingRun {
   survey_job_id: string
   control_set?: string[]
   crs_id?: string
-  residuals?: Record<string, any>
+  residuals?: Record<string, JsonValue>
   accuracy_class_id?: string
   qa_status: 'pending' | 'approved' | 'rejected'
   reviewer_id?: string
@@ -115,7 +118,7 @@ export interface Plan {
   endorsement_date?: string
   endorsed_by?: string
   digital_signature?: string
-  metadata?: Record<string, any>
+  metadata?: Record<string, JsonValue>
   is_immutable: boolean
   created_by?: string
   created_at: string
@@ -125,14 +128,14 @@ export interface Plan {
 export interface ParcelFabric {
   id: string
   parcel_id: string
-  geom: any // PostGIS Polygon
+  geom: JsonValue // PostGIS Polygon
   source_plan_id?: string
   version: number
   effective_from: string
   effective_to?: string
   change_note?: string
   change_type?: string
-  metadata?: Record<string, any>
+  metadata?: Record<string, JsonValue>
   created_at: string
 }
 
@@ -171,8 +174,8 @@ export interface AuditLog {
   action: string
   entity_table: string
   entity_id: string
-  before_state?: Record<string, any>
-  after_state?: Record<string, any>
+  before_state?: Record<string, JsonValue>
+  after_state?: Record<string, JsonValue>
   ip_address?: string
   user_agent?: string
   timestamp: string
@@ -216,7 +219,7 @@ export interface Instrument {
   serial_no: string
   calibration_due?: string
   status: 'available' | 'in-use' | 'maintenance' | 'retired'
-  metadata?: Record<string, any>
+  metadata?: Record<string, JsonValue>
   created_at: string
   updated_at: string
 }

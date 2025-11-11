@@ -1,0 +1,19 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main triangle outline -->
+  <path d="M100 20 L170 140 L30 140 Z" stroke="#C026D3" stroke-width="6" fill="none"/>
+
+  <!-- Inner shield/compass design -->
+  <path d="M100 50 L100 120" stroke="#C026D3" stroke-width="5" fill="none"/>
+  <path d="M70 80 L100 50 L130 80" stroke="#C026D3" stroke-width="5" fill="none"/>
+  <path d="M70 80 L70 120 L100 120" stroke="#C026D3" stroke-width="5" fill="none"/>
+  <path d="M130 80 L130 120 L100 120" stroke="#C026D3" stroke-width="5" fill="none"/>
+
+  <!-- Arrow pointing down -->
+  <path d="M100 120 L100 160" stroke="#C026D3" stroke-width="5" fill="none"/>
+  <path d="M90 150 L100 160 L110 150" stroke="#C026D3" stroke-width="5" fill="none"/>
+
+  <!-- Dots at corners -->
+  <circle cx="100" cy="20" r="4" fill="#C026D3"/>
+  <circle cx="170" cy="140" r="4" fill="#C026D3"/>
+  <circle cx="30" cy="140" r="4" fill="#C026D3"/>
+</svg>

@@ -2,12 +2,15 @@
   "name": "nextjs-shadcn",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20 <21"
+  },
   "scripts": {
     "dev": "next dev -H 0.0.0.0 --turbopack",
     "build": "next build",
-    "start": "next start",
-    "lint": "bunx tsc --noEmit && next lint",
-    "format": "bunx biome format --write"
+    "start": "next start -p $PORT",
+    "lint": "tsc --noEmit && next lint",
+    "format": "npx biome format --write ."
   },
   "dependencies": {
     "@azure/msal-browser": "^4.26.1",
@@ -39,7 +42,7 @@
     "react-day-picker": "^9.11.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.66.0",
-    "react-leaflet": "^5.0.0",
+    "react-leaflet": "^4.2.1",
     "recharts": "^3.4.1",
     "same-runtime": "^0.0.1",
     "sonner": "^2.0.7",
@@ -58,5 +61,8 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.33.4"
   }
 }
